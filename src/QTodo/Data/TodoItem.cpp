@@ -15,9 +15,20 @@
 
 static int l_count = 0;
 
+
+int TodoItem::getId() const
+{
+    return id;
+}
+
 TodoItem::TodoItem()
 {
     this->id = l_count++;
+}
+
+TodoItem::TodoItem(int id)
+{
+    this->id = id;
 }
 
 TodoItem::TodoItem(std::string c)

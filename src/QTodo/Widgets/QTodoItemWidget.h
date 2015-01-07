@@ -17,10 +17,15 @@
 
 #include "types.h"
 #include "Data/TodoData.h"
+#include <QMap>
+
+#include "Widgets/QTodoItemDetailWidget.h"
 
 namespace Ui {
 class QTodoItemWidget;
 }
+
+typedef QMap<int,QWidget*> WidgetsMap;
 
 class QTodoItemWidget : public QWidget
 {
@@ -34,6 +39,7 @@ public:
     QString title;
     int todoCnt;
     int bkgColor;
+    QString colorStyle;
 
     void resetView(int widgetIndex);
     void updateView();
@@ -41,10 +47,15 @@ public:
 private:
     Ui::QTodoItemWidget *ui;
     TodoData* data;
+    WidgetsMap widgets;
+    QDate date;
+
+    QTodoItemDetailWidget *insertNewItem(int id, QString &content);
 signals:
     void itemInserted(int index, int id);
 private slots:
     void on_lineEditTpyeIn_returnPressed();
+    void itemDone(int id);
 };
 
 #endif // QTODOITEMWIDGET_H

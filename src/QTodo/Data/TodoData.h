@@ -34,8 +34,10 @@ public:
     TodoData(int m_level);
     ~TodoData();
 
-    STATUS insertItems(QString str);
+    int insertItem(QString str);
     STATUS getTodoList(TodoItemList& list,QDate date);
+
+    STATUS removeListItem(QDate &date, int &id);
     // Serialize interface
 public:
     static Json::Value list_serialize(TodoItemList& list);

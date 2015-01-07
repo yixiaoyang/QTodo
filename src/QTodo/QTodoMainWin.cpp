@@ -15,6 +15,7 @@
 #include <QDir>
 #include <fstream>
 #include <iostream>
+#include <QMessageBox>
 
 QTodoMainWin::QTodoMainWin(QWidget *parent) :
     QMainWindow(parent),
@@ -45,9 +46,7 @@ QTodoMainWin::~QTodoMainWin()
 
 void QTodoMainWin::closeEvent(QCloseEvent *)
 {
-    TodoData* data = NULL;
-    /* save config */
-
+    saveUserConfig();
 }
 
 STATUS QTodoMainWin::saveUserConfig()
@@ -108,7 +107,13 @@ STATUS QTodoMainWin::loadUserConfig()
     return STATUS_OK;
 }
 
-void QTodoMainWin::on_pushButton_export_clicked()
+void QTodoMainWin::on_actionAbout_triggered()
+{
+    QMessageBox::information(this,"About","by Leon on 10Jan15.\nEmail:hityixiaoyang@gmail.com");
+
+}
+
+void QTodoMainWin::on_actionSave_Config_triggered()
 {
     saveUserConfig();
 }

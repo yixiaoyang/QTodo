@@ -25,7 +25,15 @@ public:
     QString content;
 public:
     TodoItem();
+    TodoItem(int id);
     TodoItem(std::string c);
+
+    bool operator < (const TodoItem &item2) const{
+        return (this->getId() < item2.getId());
+    }
+    bool operator == (const TodoItem &item2) const{
+        return (this->getId() == item2.getId());
+    }
 public:
 #if 0
     // Serialize interface
@@ -36,6 +44,7 @@ public:
 #else
     std::string serialize();
 #endif
+    int getId() const;
 };
 
 #endif // TODOITEM_H

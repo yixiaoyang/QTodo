@@ -43,7 +43,8 @@ private:
 protected:
     void closeEvent(QCloseEvent *);
 private slots:
-    void on_pushButton_export_clicked();
+    void on_actionAbout_triggered();
+    void on_actionSave_Config_triggered();
 };
 
 #endif // QTODOMAINWIN_H

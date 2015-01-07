@@ -24,19 +24,25 @@ TodoData::~TodoData()
         it.value().clear();
     }
 }
-STATUS TodoData::insertItems(QString str)
+
+int TodoData::insertItem(QString str)
 {
     QDate date = QDateTime::currentDateTime().date();
     TodoDataMap::iterator it = dataMap.find(date);
+    int newId = -1;
+
+    TodoItem item(str.toStdString());
     if(it != dataMap.end()){
-        it.value().append(TodoItem(str.toStdString()));
+        it.value().append(item);
+        newId = item.getId();
     }else{
         TodoItemList list;
-        list.append(TodoItem(str.toStdString()));
+        list.append(item);
+        newId = item.getId();
         dataMap.insert(date,list);
     }
 
-    return STATUS_OK;
+    return newId;
 }
 
 STATUS TodoData::getTodoList(TodoItemList &list, QDate date)
@@ -47,6 +53,20 @@ STATUS TodoData::getTodoList(TodoItemList &list, QDate date)
         return STATUS_OK;
     }
     return STATUS_ERR_NOT_EXISTED;
+}
+
+STATUS TodoData::removeListItem(QDate &date, int &id)
+{
+    int index = 0;
+    TodoDataMap::iterator it = dataMap.find(date);
+    if(it != dataMap.end()){
+        index = it.value().indexOf(TodoItem(id));
+        if(index >= 0){
+            it.value().remove(index);
+        }
+        return STATUS_OK;
+    }
+    return STATUS_FAILED;
 }
 
 Json::Value TodoData::list_serialize(TodoItemList& list)

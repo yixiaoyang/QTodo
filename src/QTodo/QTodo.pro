@@ -18,7 +18,8 @@ SOURCES += main.cpp\
     Widgets/QTodoItemWidget.cpp \
     Data/Serialize.cpp \
     Data/TodoItem.cpp \
-    Data/TodoData.cpp
+    Data/TodoData.cpp \
+    Widgets/QTodoItemDetailWidget.cpp
 
 HEADERS  += QTodoMainWin.h \
     Widgets/QTodoItemWidget.h \
@@ -26,10 +27,12 @@ HEADERS  += QTodoMainWin.h \
     types.h \
     Data/Serialize.h \
     Data/TodoItem.h \
-    Data/TodoData.h
+    Data/TodoData.h \
+    Widgets/QTodoItemDetailWidget.h
 
 FORMS    += QTodoMainWin.ui \
-    Widgets/QTodoItemWidget.ui
+    Widgets/QTodoItemWidget.ui \
+    Widgets/QTodoItemDetailWidget.ui
 
 RESOURCES += \
     Resources/resources.qrc
