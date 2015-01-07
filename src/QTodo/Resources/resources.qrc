@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/ui/bkgImages">
+        <file>images/itemBkgImage.png</file>
+        <file>images/itemBkgImage2.png</file>
+    </qresource>
+</RCC>
